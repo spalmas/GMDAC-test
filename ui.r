@@ -23,5 +23,5 @@ navbarPage("Student population at FU", id="main",
                     DTOutput("students_table", width = "60%"),
                     downloadButton("downloadData", "Download all data")
            ),
-           tabPanel("Read Me",includeMarkdown("README.md"))
+           tabPanel("Read Me",includeMarkdown("README2.md"))
 )

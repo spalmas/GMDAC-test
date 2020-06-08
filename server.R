@@ -8,6 +8,13 @@ library(ggplot2)
 
 countries <- geojsonio::geojson_read("data/FU.geojson", what = "sp")
 
+
+#colors for the map
+bins <- c(0, 100,150,200,250, Inf)
+pal <- colorBin("YlOrRd", domain = countries$n_students, bins = bins)
+
+
+
 labels <- sprintf(
   "<strong>%s</strong><br/>%g students</sup>",
   countries$sovereignt, countries$n_students
