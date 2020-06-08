@@ -58,6 +58,31 @@ shinyServer(function(input, output, session) {
       
   })
   
+  output$lifesatPlot <- renderPlot({
+    students_subset <- students %>% filter(
+      cob %in% input$cob,
+      faculty %in% input$faculty,
+      sex %in% input$sex
+    )
+    # Render a barplot
+    ggplot(students_subset, aes(x=age, y=lifesat, color=relationship, shape=job)) +
+      geom_point(size=5) +
+      ggtitle("Life satisfaction by Age")
+  })
+  
+  output$gpaPlot <- renderPlot({
+    students_subset <- students %>% filter(
+      cob %in% input$cob,
+      faculty %in% input$faculty,
+      sex %in% input$sex
+    )
+    
+    gpa <- unlist(students_subset[,6,16], use.names = FALSE)
+    # Render a barplot
+    hist(gpa, main = "Distribution of GPA")
+  })
+  
+  
   output$students_table <- renderDT(students,
                                     filter="top",
                                     options=list(pageLength=10))

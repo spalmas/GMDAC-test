@@ -19,6 +19,21 @@ navbarPage("Student population at FU", id="main",
                                   includeHTML("notes.html")  #notes at the bottom of the panel
                     )),
 
+           tabPanel("Lifesat",
+                    sidebarPanel(
+                      checkboxGroupInput('sex', 'Sex', choices = c("Female", "Male"), selected = c("Female", "Male")),
+                      checkboxGroupInput('cob', 'Country', choices = c("UK", "Spain", "Italy", "Germany", "Austria"), selected =c("UK", "Spain", "Italy", "Germany", "Austria")),
+                      checkboxGroupInput('faculty', 'Faculty', choices = c("Business", "Economics", "Political Science", "Sociology"), selected=c("Business", "Economics", "Political Science", "Sociology")),
+                    ),
+                    mainPanel(
+                      #plotOutput("lifesatPlot")
+                      div(class="span6",plotOutput(outputId= "lifesatPlot")),
+                      div(class="span6",plotOutput(outputId= "gpaPlot"))
+                      #splitLayout(cellWidths = c("50%", "50%"), plotOutput("lifesatPlot"), plotOutput("lifesatPlot")))
+                      #column(6,plotOutput("lifesatPlot"), width="500px",height="400px"),#, plotOutput("lifesatPlot"))
+                      #column(6,plotOutput("lifesatPlot"), width="500px",height="400px")#, plotOutput("lifesatPlot"))
+                    )
+           ),
            tabPanel("Data",
                     DTOutput("students_table", width = "60%"),
                     downloadButton("downloadData", "Download all data")
