@@ -10,7 +10,7 @@ countries <- geojsonio::geojson_read("data/FU.geojson", what = "sp")
 
 
 #colors for the map
-bins <- c(0, 100,150,200,250, Inf)
+bins <- c(0,50, 100,150,200,250, Inf)
 pal <- colorBin("YlOrRd", domain = countries$n_students, bins = bins)
 
 
